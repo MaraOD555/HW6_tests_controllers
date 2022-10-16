@@ -5,7 +5,7 @@ import java.util.Objects;
 @Entity
 public class Student {
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
     private int age;
@@ -13,6 +13,8 @@ public class Student {
     @JoinColumn(name = "faculty_id")
     private Faculty faculty;
 
+    public Student() {
+    }
     public Student(long id, String name, int age, Faculty faculty) {
         this.id = id;
         this.name = name;
@@ -20,8 +22,9 @@ public class Student {
         this.faculty = faculty;
     }
 
-    public Student() {
+    public Student(String name, int age) {
     }
+
 
     public Faculty getFaculty() {
         return faculty;
@@ -30,7 +33,7 @@ public class Student {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

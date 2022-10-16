@@ -48,4 +48,12 @@ public class FacultyController {
         }
         return ResponseEntity.notFound().build();// не найдено
     }
+    @GetMapping
+    public ResponseEntity<Collection<Faculty>> findByNameOrColorIgnoreCase(@RequestParam (required = false) String name,
+                                                                           @RequestParam (required = false) String color){
+        if(name != null && !name.isBlank() && color != null && !color.isBlank()) {
+            return ResponseEntity.ok(facultyService.findByColorOrNameIgnoreCase(name, color));
+        }
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    }
 }

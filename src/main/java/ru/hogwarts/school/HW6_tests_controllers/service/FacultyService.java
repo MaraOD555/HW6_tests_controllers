@@ -30,4 +30,7 @@ public class FacultyService {
     public Collection<Faculty> findFacultyByColor(String color) {
         return facultyRepository.findByColor(color);
     }
+    public Collection<Faculty> findByColorOrNameIgnoreCase(String name, String color) {
+        return facultyRepository.findByColorOrNameIgnoreCase(name, color);
+    }
 }
